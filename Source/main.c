@@ -5,8 +5,8 @@
 #include "PWMinit.h"
 #include "LCDinit.h"
 #include "ADCinit.h"
+#include "Functions.h"
 
-//test22
 
 #define ADCmaxValue 		255.0f
 #define V_REF						3.3f
@@ -29,12 +29,14 @@ int main ()
 	initGPIO();
 	initADC();
 	initPWM();
+	SYSTICKinit();
 	initLCD();
-	delay(500);
+	
+	delayms(100);
 	
 	LCDsendString("**Active  load**");
 
-	delay(1000000);
+	delayms(2000);
 	
 	char currentSens[8];			//strings for numbers to display
 	char voltageSens[8];
@@ -97,7 +99,7 @@ int main ()
 		{
 			LCDsendCmd(0x01);							//clear display
 			LCDsendCmd(0x80);							//move cursor to beginning of first line
-			delay(1500);
+			delayms(2);
 			LCDsendString("Iset:");
 			LCDsendString(currentSet);
 			
