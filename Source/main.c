@@ -6,7 +6,7 @@
 #include "LCDinit.h"
 #include "ADCinit.h"
 
-//test
+//test2
 
 #define ADCmaxValue 		255.0f
 #define V_REF						3.3f
@@ -15,7 +15,6 @@
 #define Isens_R2				1000.0f
 #define Vsens_R1				47000.0f
 #define Vsens_R2				1000.0f
-
 
 
 #define Kp							20						//PI proportional constant
