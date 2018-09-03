@@ -23,21 +23,6 @@
 
 #define LCDrefreshRate	100						//number of executions before LCD is refreshed
 
-//void delay(int count);
-//void LCDsendData(char data);
-//void LCDsendNibble(char nibble);
-//void LCDsendCmd(char cmd);
-//void LCDsendString(char *string);
-
-//void initPWM(void);
-//void initGPIO(void);
-//void initADC(void);
-//void initLCD(void);
-
-//void reverse(char *str, int len);													//Reversing string
-//void floatToStr(float n, char *res, int afterpoint);			//Float to string function
-//int intToStr(int x, char str[], int d);										//Integer to string function
-
 int counter = 0;		//Counter for LCD refrshing
 
 int main ()
