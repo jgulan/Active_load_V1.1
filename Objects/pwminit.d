@@ -1,0 +1,13 @@
+.\objects\pwminit.o: Source\PWMinit.c
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm0.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h
+.\objects\pwminit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\pwminit.o: Source\PIOinit.h
+.\objects\pwminit.o: Source\PWMinit.h
+.\objects\pwminit.o: Source\LCDinit.h
+.\objects\pwminit.o: Source\ADCinit.h

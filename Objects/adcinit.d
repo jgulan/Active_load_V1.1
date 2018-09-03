@@ -1,0 +1,13 @@
+.\objects\adcinit.o: Source\ADCinit.c
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm0.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h
+.\objects\adcinit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\adcinit.o: Source\PIOinit.h
+.\objects\adcinit.o: Source\PWMinit.h
+.\objects\adcinit.o: Source\LCDinit.h
+.\objects\adcinit.o: Source\ADCinit.h
