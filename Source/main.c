@@ -6,8 +6,7 @@
 #include "LCDinit.h"
 #include "ADCinit.h"
 
-
-
+//test
 
 #define ADCmaxValue 		255.0f
 #define V_REF						3.3f
