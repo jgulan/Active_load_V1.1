@@ -65,8 +65,6 @@ int main ()
 	//PI regulator
 	double error, integral = 0, PWM;
 	
-	
-	
 	while(1)
 	{
 		while((LPC_ADC->DR[1] < 0x7FFFFFFF));											//wait for flag "done" to be set
