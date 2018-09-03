@@ -6,19 +6,14 @@
 #include "LCDinit.h"
 #include "ADCinit.h"
 #include "Functions.h"
+#include "PIreg.h"
 
-
-#define ADCmaxValue 		255.0f
 #define V_REF						3.3f
 #define R_shunt					0.007f
 #define Isens_R1				47000.0f
 #define Isens_R2				1000.0f
 #define Vsens_R1				47000.0f
 #define Vsens_R2				1000.0f
-
-
-#define Kp							20						//PI proportional constant
-#define Ki							1							//PI integral constant
 
 #define LCDrefreshRate	100						//number of executions before LCD is refreshed
 
@@ -33,9 +28,7 @@ int main ()
 	initLCD();
 	
 	delayms(100);
-	
 	LCDsendString("**Active  load**");
-
 	delayms(2000);
 	
 	char currentSens[8];			//strings for numbers to display
@@ -47,8 +40,7 @@ int main ()
 	float AD1f, AD2f, AD3f;								//ADC float values
 	float powerWatt;
 	
-	//PI regulator
-	double error, integral = 0, PWM;
+	int PWM;
 	
 	while(1)
 	{
@@ -73,25 +65,7 @@ int main ()
 		powerWatt = AD1f * AD3f;														//P = U * I
 		floatToStr(powerWatt, powerString, 2);
 		
-		//PI regulator
-		
-		error = AD2f - AD3f;										//error = setpoint curent - current current
-		integral = integral + error;
-		
-		if (integral > ADCmaxValue)							//integral max limit
-			integral = ADCmaxValue;
-		
-		PWM = (Kp * error) + (Ki * integral);
-		
-		if (PWM > ADCmaxValue)			//output max limit
-			PWM = ADCmaxValue;
-		else if (PWM < 0)						//output min limit
-			PWM = 0;
-		
-		if(AD2f < 0.01)							//if setpiont is less than 0.01A, turn off MosFET
-			PWM = 0;
-		
-		PWM = ADCmaxValue - PWM;														//invert PWM value because duty cycle is inverted
+		PWM = PIregulator(AD2f, AD3f);
 		
 		LPC_TMR16B0->MR0 = (((float)PWM)/ADCmaxValue) * (CPUfreq / PWMfreq);	//duty cycle
 		

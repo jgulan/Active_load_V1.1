@@ -6,6 +6,7 @@
 #include "LCDinit.h"
 #include "ADCinit.h"
 #include "Functions.h"
+#include "PIreg.h"
 
 	/*
 Command list:
@@ -32,18 +33,19 @@ Command list:
 void initLCD(void)
 {
 	LCDsendCmd(0x03);				//initialize LCD
-	delayms(2);
+	delayms(40);
 	LCDsendCmd(0x02);
-	delayms(1);
+	delayms(20);
 	LCDsendCmd(0x28);				//enable 5x7 mode for charactersž
-	delayms(1);
+	delayms(20);
 	LCDsendCmd(0x0C);				//display ON, cursor ON
-	delayms(1);
+	delayms(20);
 	LCDsendCmd(0x01);				//clear display
-	delayms(1);
+	delayms(20);
 	LCDsendCmd(0x80);				//move cursor to beginning of first line
-	delayms(1);
+	delayms(20);
 	LCDsendCmd(0x06);
+	delayms(20);
 }
 
 void LCDsendNibble(char nibble)

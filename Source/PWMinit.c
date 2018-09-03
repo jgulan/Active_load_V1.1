@@ -6,6 +6,7 @@
 #include "LCDinit.h"
 #include "ADCinit.h"
 #include "Functions.h"
+#include "PIreg.h"
 
 void initPWM(void)
 {
