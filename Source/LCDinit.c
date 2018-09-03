@@ -5,6 +5,7 @@
 #include "PWMinit.h"
 #include "LCDinit.h"
 #include "ADCinit.h"
+#include "Functions.h"
 
 	/*
 Command list:
@@ -31,17 +32,17 @@ Command list:
 void initLCD(void)
 {
 	LCDsendCmd(0x03);				//initialize LCD
-	delay(100000);
+	delayms(2);
 	LCDsendCmd(0x02);
-	delay(10000);
+	delayms(1);
 	LCDsendCmd(0x28);				//enable 5x7 mode for charactersž
-	delay(10000);
+	delayms(1);
 	LCDsendCmd(0x0C);				//display ON, cursor ON
-	delay(10000);
+	delayms(1);
 	LCDsendCmd(0x01);				//clear display
-	delay(10000);
+	delayms(1);
 	LCDsendCmd(0x80);				//move cursor to beginning of first line
-	delay(10000);
+	delayms(1);
 	LCDsendCmd(0x06);
 }
 
@@ -98,53 +99,5 @@ void LCDsendString(char *string)
 	}
 }
 
-void delay(int count)
-{
-	for(int i = 0; i < count; i++);
-}
 
 
-void reverse(char *str, int len)
-{
-	int i = 0, j = len-1, temp;
-	while (i < j)
-	{
-		temp = str[i];
-		str[i] = str[j];
-		str[j] = temp;
-		i++;
-		j--;
-	}
-}
-
-int intToStr(int x, char str[], int d)
-{
-	int i=0;
-	while (x)
-	{
-		str[i++] = (x % 10) + '0';
-		x = x/10;
-	}
-	while(i<d)
-		str[i++] = '0';
-	
-	reverse(str, i);
-	str[i] = '\0';
-	return i;
-}
-
-void floatToStr(float n, char *res, int afterpoint)
-{
-	int ipart = (int)n;
-	
-	float fpart = n - (float)ipart;
-	
-	int i = intToStr(ipart, res, 1);
-	
-	if(afterpoint != 0)
-	{
-		res[i] = '.';
-		fpart = fpart * pow(10, afterpoint);
-		intToStr((int)fpart, res + i + 1, afterpoint);
-	}
-}

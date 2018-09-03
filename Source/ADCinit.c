@@ -5,6 +5,7 @@
 #include "PWMinit.h"
 #include "LCDinit.h"
 #include "ADCinit.h"
+#include "Functions.h"
 
 void initADC(void)
 {

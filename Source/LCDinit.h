@@ -10,9 +10,5 @@
 	void LCDsendCmd(char cmd);
 	void LCDsendData(char data);
 	void LCDsendString(char *string);
-	void delay(int count);
-	void reverse(char *str, int len);
-	int intToStr(int x, char str[], int d);
-	void floatToStr(float n, char *res, int afterpoint);
 
 #endif
