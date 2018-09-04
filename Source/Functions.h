@@ -3,7 +3,7 @@
 
 	void delayms(int miliseconds);
 	void SysTick_Handler(void);
-	void SYSTICKinit(void);
+	void initSYSTICK(void);
 	void reverse(char *str, int len);
 	int intToStr(int x, char str[], int d);
 	void floatToStr(float n, char *res, int afterpoint);

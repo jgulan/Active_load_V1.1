@@ -425,6 +425,36 @@
               <FileType>5</FileType>
               <FilePath>.\Source\ADCinit.h</FilePath>
             </File>
+            <File>
+              <FileName>Functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Functions.c</FilePath>
+            </File>
+            <File>
+              <FileName>Functions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\Functions.h</FilePath>
+            </File>
+            <File>
+              <FileName>PIreg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\PIreg.h</FilePath>
+            </File>
+            <File>
+              <FileName>PIreg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\PIreg.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Documentation</GroupName>
+          <Files>
+            <File>
+              <FileName>Abstract.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Abstract.txt</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -8,6 +8,7 @@
 #include "Functions.h"
 #include "PIreg.h"
 
+
 #define V_REF						3.3f
 #define R_shunt					0.007f
 #define Isens_R1				47000.0f
@@ -17,59 +18,58 @@
 
 #define LCDrefreshRate	100						//number of executions before LCD is refreshed
 
-int counter = 0;		//Counter for LCD refrshing
-
 int main ()
 {
 	initGPIO();
-	initADC();
+	initADCinterrupt();
 	initPWM();
-	SYSTICKinit();
+	initSYSTICK();
 	initLCD();
 	
 	delayms(100);
 	LCDsendString("**Active  load**");
-	delayms(2000);
+	delayms(1000);
 	
 	char currentSens[8];			//strings for numbers to display
 	char voltageSens[8];
 	char currentSet[8];
 	char powerString[8];
 	
-	int AD1, AD2, AD3;										//ADC values
-	float AD1f, AD2f, AD3f;								//ADC float values
+	int adReadBuffer[3];
+	float adFloatBuffer[3];
 	float powerWatt;
 	
 	int PWM;
-	
+	int counter = 0;		//Counter for LCD refrshing
+		
 	while(1)
 	{
-		while((LPC_ADC->DR[1] < 0x7FFFFFFF));											//wait for flag "done" to be set
-		AD1 = (LPC_ADC->DR[1] & 0xFFC0)>>8;												//voltag sensor data is stored in bits 15:6
-		AD1f = AD1 / ADCmaxValue;																	//voltage sensor float vale
-		AD1f = AD1f * V_REF *((Vsens_R1 + Vsens_R2) / Vsens_R2);
-		floatToStr(AD1f, voltageSens, 2);
+		NVIC_EnableIRQ(ADC_IRQn);											//enable ADC interrupt
+		readADC(adReadBuffer);
 		
-		while((LPC_ADC->DR[2] < 0x7FFFFFFF));											//wait for flag "done" to be set
-		AD2 = (LPC_ADC->DR[2] & 0xFFC0)>>8;												//data is stored in bits 15:6
-		AD2f = (ADCmaxValue - AD2) / ADCmaxValue;									//current setpoint
-		AD2f = AD2f * 10;
-		floatToStr(AD2f, currentSet, 2);
+		/*voltage sensor*/														
+		adFloatBuffer[0] = adReadBuffer[0] /ADCmaxValue;														
+		adFloatBuffer[0] = adFloatBuffer[0] * V_REF *((Vsens_R1 + Vsens_R2) / Vsens_R2);
+		floatToStr(adFloatBuffer[0], voltageSens, 2);
 		
-		while((LPC_ADC->DR[3] < 0x7FFFFFFF));																	//wait for flag "done" to be set
-		AD3 = (LPC_ADC->DR[3] & 0xFFC0)>>8;																		//data is stored in bits 15:6
-		AD3f = AD3 / ADCmaxValue;																							//currrent sensor
-		AD3f = AD3f * V_REF * (1/R_shunt) * (Isens_R2/(Isens_R2+Isens_R1));	
-		floatToStr(AD3f, currentSens, 2);
+		/*current setpoint*/
+		adFloatBuffer[1] = (ADCmaxValue - adReadBuffer[1]) /ADCmaxValue;						
+		adFloatBuffer[1] = adFloatBuffer[1] * 10;
+		floatToStr(adFloatBuffer[1], currentSet, 2);
 		
-		powerWatt = AD1f * AD3f;														//P = U * I
+		/*currrent sensor*/
+		adFloatBuffer[2] = adReadBuffer[2] /ADCmaxValue;														
+		adFloatBuffer[2] = adFloatBuffer[2] * V_REF * (1/R_shunt) * (Isens_R2/(Isens_R2+Isens_R1));	
+		floatToStr(adFloatBuffer[2], currentSens, 2);
+		
+		powerWatt = adFloatBuffer[0] * adFloatBuffer[2];											//P = U * I
 		floatToStr(powerWatt, powerString, 2);
 		
-		PWM = PIregulator(AD2f, AD3f);
+		PWM = PIregulator(adFloatBuffer[1], adFloatBuffer[2]);								//calculate PWM duty cycle
 		
-		LPC_TMR16B0->MR0 = (((float)PWM)/ADCmaxValue) * (CPUfreq / PWMfreq);	//duty cycle
+		LPC_TMR16B0->MR0 = (((float)PWM)/ADCmaxValue) * (CPUfreq / PWMfreq);	//set duty cycle
 		
-		if (counter == LCDrefreshRate)
+		if (counter == LCDrefreshRate)	//refresh LCD every LCDrefreshrate times
 		{
 			LCDsendCmd(0x01);							//clear display
 			LCDsendCmd(0x80);							//move cursor to beginning of first line

@@ -10,18 +10,18 @@
 
 volatile uint32_t msTicks = 0;
 
-void SYSTICKinit(void)
+void initSYSTICK(void)
 {
 	SysTick->LOAD  = (uint32_t)(12000 - 1UL);                         // set reload register
   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); // set Priority for Systick Interrupt
   SysTick->VAL   = 0UL;                                             // Load the SysTick Counter Value
-  SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;                         // Enable SysTick IRQ and SysTick Timer
+  SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;    // Enable SysTick IRQ and SysTick Timer
 }
 
 void delayms(int miliseconds)									//must be less than 1380ms
 {
 	msTicks = 0;
-	SysTick->VAL  &= 0x0;																	//Reset_IRQn System Tick counter and COUNTFLAG in CTRL register
+	SysTick->VAL  &= 0x0;												//Reset_IRQn System Tick counter and COUNTFLAG in CTRL register
 	while(msTicks < miliseconds);
 }
 
