@@ -7,8 +7,10 @@
 #include "ADCinit.h"
 #include "Functions.h"
 #include "PIreg.h"
+#include "menuFunctions.h"
+#include "converting.h"
 
-	volatile double error, integral = 0;
+volatile double error, integral = 0;
 
 int PIregulator(double setpoint, double current)
 {

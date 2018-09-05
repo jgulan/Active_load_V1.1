@@ -7,6 +7,8 @@
 #include "ADCinit.h"
 #include "Functions.h"
 #include "PIreg.h"
+#include "menuFunctions.h"
+#include "converting.h"
 
 volatile int adBuffer[3];
 

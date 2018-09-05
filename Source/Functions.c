@@ -7,12 +7,16 @@
 #include "ADCinit.h"
 #include "Functions.h"
 #include "PIreg.h"
+#include "menuFunctions.h"
+#include "converting.h"
 
-volatile uint32_t msTicks = 0;
+volatile int msTicks = 0;
+volatile int widthTicks = 0;
+volatile int dutyCycleTicks = 0;
 
 void initSYSTICK(void)
 {
-	SysTick->LOAD  = (uint32_t)(12000 - 1UL);                         // set reload register
+	SysTick->LOAD  = (uint32_t)(120 - 1UL);                         // set reload register
   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); // set Priority for Systick Interrupt
   SysTick->VAL   = 0UL;                                             // Load the SysTick Counter Value
   SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;    // Enable SysTick IRQ and SysTick Timer
@@ -22,12 +26,21 @@ void delayms(int miliseconds)									//must be less than 1380ms
 {
 	msTicks = 0;
 	SysTick->VAL  &= 0x0;												//Reset_IRQn System Tick counter and COUNTFLAG in CTRL register
-	while(msTicks < miliseconds);
+	while((msTicks/100) < miliseconds);
+}
+
+void delayus(int useconds)
+{
+	msTicks = 0;
+	SysTick->VAL  &= 0x0;												//Reset_IRQn System Tick counter and COUNTFLAG in CTRL register
+	while((msTicks)*10 < useconds);
 }
 
 void SysTick_Handler(void)
 {
 	msTicks++;
+	widthTicks++;
+//	dutyCycleTicks++;
 }
 
 void delay(int count)

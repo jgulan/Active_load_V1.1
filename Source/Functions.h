@@ -8,5 +8,6 @@
 	int intToStr(int x, char str[], int d);
 	void floatToStr(float n, char *res, int afterpoint);
 	void delay(int count);
-	
+	void delayus(int useconds);
+		
 #endif

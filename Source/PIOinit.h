@@ -11,5 +11,9 @@
 #define PIOINIT_INCLUDED
 
 void initGPIO(void);
+void PIOINT0_IRQHandler(void);
+
+void PIOINT1_IRQHandler(void);
+int vrati_brojac(void);
 
 #endif

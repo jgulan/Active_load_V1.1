@@ -11,3 +11,7 @@
 .\objects\pwminit.o: Source\PWMinit.h
 .\objects\pwminit.o: Source\LCDinit.h
 .\objects\pwminit.o: Source\ADCinit.h
+.\objects\pwminit.o: Source\Functions.h
+.\objects\pwminit.o: Source\PIreg.h
+.\objects\pwminit.o: Source\menuFunctions.h
+.\objects\pwminit.o: Source\converting.h

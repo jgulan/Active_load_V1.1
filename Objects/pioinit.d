@@ -11,3 +11,7 @@
 .\objects\pioinit.o: Source\PWMinit.h
 .\objects\pioinit.o: Source\LCDinit.h
 .\objects\pioinit.o: Source\ADCinit.h
+.\objects\pioinit.o: Source\Functions.h
+.\objects\pioinit.o: Source\PIreg.h
+.\objects\pioinit.o: Source\menuFunctions.h
+.\objects\pioinit.o: Source\converting.h

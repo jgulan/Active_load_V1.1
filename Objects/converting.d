@@ -1,0 +1,17 @@
+.\objects\converting.o: Source\converting.c
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\LPC11xx.h
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm0.h
+.\objects\converting.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_version.h
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h
+.\objects\converting.o: C:\Keil_v5\ARM\PACK\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx\system_LPC11xx.h
+.\objects\converting.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\converting.o: Source\PIOinit.h
+.\objects\converting.o: Source\PWMinit.h
+.\objects\converting.o: Source\LCDinit.h
+.\objects\converting.o: Source\ADCinit.h
+.\objects\converting.o: Source\Functions.h
+.\objects\converting.o: Source\PIreg.h
+.\objects\converting.o: Source\menuFunctions.h
+.\objects\converting.o: Source\converting.h

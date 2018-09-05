@@ -1,6 +1,6 @@
 #define ADCmaxValue 		255.0f
 
-#define Kp							20						//PI proportional constant
+#define Kp							10						//PI proportional constant
 #define Ki							1							//PI integral constant
 
 #ifndef PIREG_INCLUDED

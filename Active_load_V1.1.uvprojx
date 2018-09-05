@@ -445,6 +445,26 @@
               <FileType>1</FileType>
               <FilePath>.\Source\PIreg.c</FilePath>
             </File>
+            <File>
+              <FileName>menuFunctions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\menuFunctions.c</FilePath>
+            </File>
+            <File>
+              <FileName>menuFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\menuFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>converting.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\converting.h</FilePath>
+            </File>
+            <File>
+              <FileName>converting.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\converting.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -11,3 +11,7 @@
 .\objects\main.o: Source\PWMinit.h
 .\objects\main.o: Source\LCDinit.h
 .\objects\main.o: Source\ADCinit.h
+.\objects\main.o: Source\Functions.h
+.\objects\main.o: Source\PIreg.h
+.\objects\main.o: Source\menuFunctions.h
+.\objects\main.o: Source\converting.h
