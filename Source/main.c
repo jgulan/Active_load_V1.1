@@ -13,7 +13,6 @@
 #define LCDrefreshRate	100						//number of executions before LCD is refreshed
 
 int counter = 0;		//Counter for LCD refrshing
-extern int brojac;
 extern int adReadBuffer[3];
 
 int main ()

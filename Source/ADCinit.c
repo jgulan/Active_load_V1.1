@@ -35,7 +35,7 @@ void initADCinterrupt(void)
 	LPC_IOCON->R_PIO1_1				=0x02;
 	LPC_IOCON->R_PIO1_2				=0x02;
 	
-	LPC_ADC->CR								= 0x010B0E;					//BURST mode ON, CLKDIV = B so clock for ADC is 12Mhz/(CLKDIV+1), SEL = E to select ADC 1, 2, 3 1110
+	LPC_ADC->CR								= 0x01030E;					//BURST mode ON, CLKDIV = B so clock for ADC is 12Mhz/(CLKDIV+1), SEL = E to select ADC 1, 2, 3 1110
 	LPC_ADC->INTEN						&=~(1<<8);					//must be set 0 in BURST mode
 	NVIC_EnableIRQ(ADC_IRQn);
 	LPC_ADC->INTEN						|=(0x0E);					//set pins for ADC 1, 2, 3 ca generate interrupt
@@ -53,7 +53,7 @@ void ADC_IRQHandler(void)
 
 void readADC(int *buffer)
 {
-	for(int i = 0; i < 3; i++)
+	for(int i = 0; i < 3 ; i++)
 	{
 		*buffer = adBuffer[i];
 		buffer++;

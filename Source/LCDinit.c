@@ -65,16 +65,16 @@ void LCDsendCmd(char cmd)
 	LCDsendNibble((cmd >> 4) & 0x0F);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_RS);			//send LOW puls to Rgister Select for command 
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_EN);			//high to low pulse on enable pin
-	delay(100);
+	delay(10);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_EN);
-	delay(100);
+	delay(10);
 	
 	LCDsendNibble(cmd & 0x0F);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_RS);			//send LOW puls to Rgister Select
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_EN);			//high to low pulse on enable pin
-	delay(100);
+	delay(10);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_EN);
-	delay(100);
+	delay(10);
 	
 }
 
@@ -82,16 +82,16 @@ void LCDsendData(char data){
 	LCDsendNibble((data >> 4) & 0x0F);
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_RS);			//send HIGH puls to Rgister Select for data 
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_EN);			//high to low pulse on enable pin
-	delay(100);
+	delay(10);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_EN);
-	delay(100);
+	delay(10);
 	
 	LCDsendNibble(data & 0x0F);
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_RS);			//send HIGH puls to Rgister Select
 	LPC_GPIO0->DATA			|= (1 << LCD_PIO0_EN);			//high to low pulse on enable pin
-	delay(100);
+	delay(10);
 	LPC_GPIO0->DATA			&= ~(1 << LCD_PIO0_EN);
-	delay(100);
+	delay(10);
 }
 
 void LCDsendString(char *string)

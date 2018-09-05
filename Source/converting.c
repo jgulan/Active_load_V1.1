@@ -52,8 +52,8 @@ void convert(void)
 	floatToStr(adFloatBuffer[2], currentSens, 2);
 		
 	powerWatt = adFloatBuffer[0] * adFloatBuffer[2];											//P = U * I
-	floatToStr(powerWatt, powerString, 2);
-	//floatToStr(brojac, powerString, 2);
+	//floatToStr(powerWatt, powerString, 2);
+	floatToStr(adFloatBuffer[1], powerString, 2);
 	
 	/*  dutyCycleTicks is added every 10us, widthSetpoint is in ms and cycleSetpoint is in %  */
 	if((widthTicks * 10) >= (widthSetpoint*10*cycleSetpoint))
@@ -62,7 +62,6 @@ void convert(void)
 		if((widthTicks * 10) >= (widthSetpoint*1000))
 		{
 			widthTicks = 0;
-			//dutyCycleTicks = 0;
 			adFloatBuffer[1] = peakCurrentSetpoint;
 		}
 	}

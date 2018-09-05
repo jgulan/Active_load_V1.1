@@ -14,6 +14,7 @@ volatile int msTicks = 0;
 volatile int widthTicks = 0;
 volatile int dutyCycleTicks = 0;
 
+
 void initSYSTICK(void)
 {
 	SysTick->LOAD  = (uint32_t)(120 - 1UL);                         // set reload register
@@ -41,6 +42,7 @@ void SysTick_Handler(void)
 	msTicks++;
 	widthTicks++;
 //	dutyCycleTicks++;
+
 }
 
 void delay(int count)
