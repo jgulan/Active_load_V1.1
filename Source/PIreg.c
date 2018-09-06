@@ -18,10 +18,10 @@ int PIregulator(double setpoint, double current)
 	error = setpoint - current;										//error = setpoint curent - current current
 	integral = integral + error;
 		
-	if (integral > ADCmaxValue)							//integral max limit
-		integral = ADCmaxValue;
+	//if (integral > ADCmaxValue)							//integral max limit
+	//	integral = ADCmaxValue;
 		
-	PWM = (Kp * error) + (Ki * integral);
+	PWM = (Kp * error) + ((Kp/Ti) * integral);
 		
 	if (PWM > ADCmaxValue)			//output max limit
 		PWM = ADCmaxValue;
